@@ -18,4 +18,4 @@ A lightweight web application to create, take, and manage SAT practice tests. Th
 
 ---
 
-# run node server.js and visit [localhost:](http://localhost:3000/)
+- run `node server.js` and visit [localhost:](http://localhost:3000/)
