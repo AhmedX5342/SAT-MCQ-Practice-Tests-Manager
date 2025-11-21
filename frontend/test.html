@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create / Take Test</title>
+
+  <!-- Tailwind CDN (official recommended script) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { darkMode: 'class' };</script>
+</head>
+<body class="h-full flex items-center justify-center p-4">
+  <div class="w-full max-w-3xl">
+
+    <!-- Header -->
+    <header class="flex items-center justify-between mb-6">
+      <h1 class="text-3xl font-bold">SAT Test Manager</h1>
+      <div class="flex gap-3">
+        <a href="/" class="px-4 py-2 border rounded hover:bg-gray-200 dark:hover:bg-gray-800 transition">Home</a>
+      </div>
+    </header>
+
+    <!-- Create Test Form -->
+    <section class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 mb-6">
+      <form id="createForm" class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium mb-1">Test Name</label>
+          <input id="testName" type="text" required placeholder="Enter test name"
+            class="mt-1 w-full px-4 py-2 border rounded-lg bg-gray-50 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1">Number of Questions</label>
+          <input id="numQuestions" type="number" min="1" value="50" required
+            class="mt-1 w-32 px-4 py-2 border rounded-lg bg-gray-50 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+        </div>
+        <div class="flex gap-3">
+          <button id="startBtn" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition">Start Test</button>
+          <button id="resetBtn" type="button" class="px-4 py-2 border rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition">Reset</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Test Bubble Sheet -->
+    <section id="tester" class="hidden bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 space-y-6">
+      <!-- Test Info -->
+      <div class="flex justify-between items-center mb-4">
+        <div class="text-lg font-medium">Test: <span id="displayName"></span></div>
+        <div class="text-lg font-medium">Q <span id="currentIndex">1</span> / <span id="totalQ">0</span></div>
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="w-full h-3 bg-gray-300 dark:bg-gray-700 rounded-full mb-4 overflow-hidden">
+        <div id="progressBar" class="h-3 bg-indigo-500 rounded-full transition-all duration-300 w-0"></div>
+      </div>
+
+      <!-- Choices -->
+      <div class="grid grid-cols-5 gap-4">
+        <button class="choiceBtn py-4 rounded-lg border hover:bg-indigo-100 dark:hover:bg-indigo-700 transition text-lg font-semibold" data-choice="A">A</button>
+        <button class="choiceBtn py-4 rounded-lg border hover:bg-indigo-100 dark:hover:bg-indigo-700 transition text-lg font-semibold" data-choice="B">B</button>
+        <button class="choiceBtn py-4 rounded-lg border hover:bg-indigo-100 dark:hover:bg-indigo-700 transition text-lg font-semibold" data-choice="C">C</button>
+        <button class="choiceBtn py-4 rounded-lg border hover:bg-indigo-100 dark:hover:bg-indigo-700 transition text-lg font-semibold" data-choice="D">D</button>
+        <button class="choiceBtn py-4 rounded-lg border hover:bg-indigo-100 dark:hover:bg-indigo-700 transition text-lg font-semibold" data-choice="E">E</button>
+      </div>
+
+      <!-- Navigation & Stats -->
+      <div class="flex items-center justify-between">
+        <div class="flex gap-2">
+          <button id="prevBtn" class="px-4 py-2 border rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition">Prev</button>
+          <button id="nextBtn" class="px-4 py-2 border rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition">Next</button>
+        </div>
+        <div class="text-sm font-medium">Answered: <span id="answeredCount">0</span></div>
+      </div>
+
+      <!-- Save Button -->
+      <div class="flex justify-end">
+        <button id="saveTest" class="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">Save Test</button>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Test Script -->
+  <script src="test.js"></script>
+</body>
+</html>
