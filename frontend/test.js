@@ -113,6 +113,16 @@
     }
   });
 
+  // keyboard shortcuts 1-5 (map to A-E)
+  window.addEventListener('keydown', (e) => {
+    if (!totalQuestions) return;
+    const key = e.key;
+    const choiceMap = { '1': 'A', '2': 'B', '3': 'C', '4': 'D', '5': 'E' };
+    if (choiceMap[key]) {
+      setAnswer(choiceMap[key]);
+    }
+  });
+
   // save
   saveBtn?.addEventListener('click', async () => {
     const name = testNameInput.value.trim();
