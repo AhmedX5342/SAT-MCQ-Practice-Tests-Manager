@@ -15,3 +15,7 @@ A lightweight web application to create, take, and manage SAT practice tests. Th
 - **Dark mode** and **light mode** support.
 - Fully responsive UI using **Tailwind CSS**.
 - Plain JavaScript, no frameworks required.
+
+---
+
+# run node server.js and visit [localhost:](http://localhost:3000/)
