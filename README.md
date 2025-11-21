@@ -17,5 +17,6 @@ A lightweight web application to create, take, and manage SAT practice tests. Th
 - Plain JavaScript, no frameworks required.
 
 ---
-
-- run `node server.js` and visit [localhost:](http://localhost:3000/)
+- make sure node is installed
+- run `npm i express`
+- run `node server.js` and visit localhost:3000
