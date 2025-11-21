@@ -55,10 +55,12 @@
         <h3 id="modalTitle" class="text-lg font-semibold">Test Details</h3>
         <div class="flex gap-2">
           <button id="saveDetails" class="px-3 py-1 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">Save Changes</button>
+          <button id="viewAnswersOnly" class="px-3 py-1 border rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition">View Answers Only</button>
+          <button id="backToEditable" class="px-3 py-1 border rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition hidden">Back to editable</button>
           <button id="closeModal" class="px-3 py-1 border rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition">Close</button>
         </div>
       </div>
-      <div id="modalBody" class="space-y-2 overflow-auto">
+      <div id="modalBody" class="space-y-2 overflow-auto max-h-[90vh]">
         <!-- Test answers dynamically inserted here -->
       </div>
     </div>

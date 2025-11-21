@@ -28,6 +28,18 @@
           <input id="testName" type="text" required placeholder="Enter test name"
             class="mt-1 w-full px-4 py-2 border rounded-lg bg-gray-50 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
         </div>
+        <div class="flex items-center gap-3">
+          <label class="flex items-center gap-2">
+            <input id="enableTimer" type="checkbox" class="h-4 w-4" />
+            <span class="text-sm">Enable timer</span>
+          </label>
+          <label id="timerMinutesLabel" class="hidden items-center gap-2 text-sm">
+            Minutes:
+            <input id="timerMinutes" type="number" min="1" value="30" class="ml-2 w-20 px-2 py-1 border rounded" />
+          </label>
+        </div>
+
+        <!-- Selected answer is always visible now (no checkbox option) -->
         <div>
           <label class="block text-sm font-medium mb-1">Number of Questions</label>
           <input id="numQuestions" type="number" min="1" value="50" required
@@ -45,7 +57,10 @@
       <!-- Test Info -->
       <div class="flex justify-between items-center mb-4">
         <div class="text-lg font-medium">Test: <span id="displayName"></span></div>
-        <div class="text-lg font-medium">Q <span id="currentIndex">1</span> / <span id="totalQ">0</span></div>
+        <div class="flex items-center gap-4">
+          <div class="text-lg font-medium">Q <span id="currentIndex">1</span> / <span id="totalQ">0</span></div>
+          <div id="timerContainer" class="text-sm font-medium hidden">Time: <span id="timerDisplay">00:00</span></div>
+        </div>
       </div>
 
       <!-- Progress Bar -->
@@ -54,13 +69,16 @@
       </div>
 
       <!-- Choices -->
-      <div class="grid grid-cols-5 gap-4">
+      <!-- Responsive: 2 columns on very small screens, 3 on small, 5 on medium+ -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
         <button class="choiceBtn py-4 rounded-lg border hover:bg-indigo-100 dark:hover:bg-indigo-700 transition text-lg font-semibold" data-choice="A">A</button>
         <button class="choiceBtn py-4 rounded-lg border hover:bg-indigo-100 dark:hover:bg-indigo-700 transition text-lg font-semibold" data-choice="B">B</button>
         <button class="choiceBtn py-4 rounded-lg border hover:bg-indigo-100 dark:hover:bg-indigo-700 transition text-lg font-semibold" data-choice="C">C</button>
         <button class="choiceBtn py-4 rounded-lg border hover:bg-indigo-100 dark:hover:bg-indigo-700 transition text-lg font-semibold" data-choice="D">D</button>
         <button class="choiceBtn py-4 rounded-lg border hover:bg-indigo-100 dark:hover:bg-indigo-700 transition text-lg font-semibold" data-choice="E">E</button>
       </div>
+
+      <div id="selectedDisplay" class="text-sm mt-2">Selected: <span id="selectedChoice">-</span></div>
 
       <!-- Navigation & Stats -->
       <div class="flex items-center justify-between">
