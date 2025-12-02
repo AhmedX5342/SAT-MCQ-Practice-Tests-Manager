@@ -68,6 +68,12 @@
         <div id="progressBar" class="h-3 bg-indigo-500 rounded-full transition-all duration-300 w-0"></div>
       </div>
 
+      <!-- Quick Jump Grid -->
+      <div id="gridContainer" class="mb-4">
+        <label class="block text-sm font-medium mb-2">Jump To Question</label>
+        <div id="gridView" class="grid grid-cols-5 sm:grid-cols-8 md:grid-cols-10 gap-2"></div>
+      </div>
+
       <!-- Choices -->
       <!-- Responsive: 2 columns on very small screens, 3 on small, 5 on medium+ -->
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
@@ -79,6 +85,12 @@
       </div>
 
       <div id="selectedDisplay" class="text-sm mt-2">Selected: <span id="selectedChoice">-</span></div>
+
+      <!-- Tags: Guessed / Requires Study -->
+      <div class="flex items-center gap-2">
+        <button id="tagGuessed" type="button" class="px-2 py-1 text-sm border rounded bg-yellow-50 hover:bg-yellow-100 hidden">Guessed</button>
+        <button id="tagStudy" type="button" class="px-2 py-1 text-sm border rounded bg-red-50 hover:bg-red-100 hidden">Requires Study</button>
+      </div>
 
       <!-- Navigation & Stats -->
       <div class="flex items-center justify-between">

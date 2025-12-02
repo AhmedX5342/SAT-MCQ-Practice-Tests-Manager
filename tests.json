@@ -1,262 +1,401 @@
 [
   {
-    "id": "1763761004612",
-    "name": "exam 3.pdf",
+    "id": "1764712619160",
+    "name": "EST II Physics Test 8",
     "numQuestions": 75,
     "answers": [
       {
-        "choice": "E"
+        "choice": "A",
+        "guessed": false,
+        "requiresStudy": false
       },
       {
-        "choice": "B"
-      },
-      {
-        "choice": "D"
-      },
-      {
-        "choice": "B"
-      },
-      {
-        "choice": "C"
-      },
-      {
-        "choice": "C"
-      },
-      {
-        "choice": "A"
-      },
-      {
-        "choice": "D",
+        "choice": "C",
+        "guessed": false,
+        "requiresStudy": true,
         "markedWrong": true,
-        "correctAnswer": ""
+        "correctAnswer": "b"
       },
       {
-        "choice": "C"
-      },
-      {
-        "choice": "A"
-      },
-      {
-        "choice": "D"
-      },
-      {
-        "choice": "B"
-      },
-      {
-        "choice": "A"
-      },
-      {
-        "choice": "C"
-      },
-      {
-        "choice": "B"
-      },
-      {
-        "choice": "B"
-      },
-      {
-        "choice": "E"
-      },
-      {
-        "choice": "D"
-      },
-      {
-        "choice": "C",
+        "choice": "B",
+        "guessed": false,
+        "requiresStudy": false,
         "markedWrong": true,
-        "correctAnswer": ""
-      },
-      {
-        "choice": "E"
-      },
-      {
-        "choice": "B"
-      },
-      {
-        "choice": "D"
-      },
-      {
-        "choice": "E",
-        "markedWrong": false
-      },
-      {
-        "choice": "A"
-      },
-      {
-        "choice": "B"
-      },
-      {
-        "choice": "C",
-        "markedWrong": true
-      },
-      {
-        "choice": "C"
-      },
-      {
-        "choice": "B"
-      },
-      {
-        "choice": "D",
-        "markedWrong": true
-      },
-      {
-        "choice": "E",
-        "markedWrong": true
-      },
-      {
-        "choice": "D"
-      },
-      {
-        "choice": "D"
-      },
-      {
-        "choice": "E"
-      },
-      {
-        "choice": "E",
-        "markedWrong": true
-      },
-      {
-        "choice": "E",
-        "markedWrong": true
-      },
-      {
-        "choice": "D"
-      },
-      {
-        "choice": "E"
-      },
-      {
-        "choice": "E",
-        "markedWrong": true
-      },
-      {
-        "choice": "E"
+        "correctAnswer": "c"
       },
       {
         "choice": "A",
-        "markedWrong": true
-      },
-      {
-        "choice": "E",
-        "markedWrong": true
-      },
-      {
-        "choice": "C",
-        "markedWrong": false
-      },
-      {
-        "choice": "B"
-      },
-      {
-        "choice": "E"
-      },
-      {
-        "choice": "D",
-        "markedWrong": true
-      },
-      {
-        "choice": "D"
-      },
-      {
-        "choice": "E",
-        "markedWrong": true
-      },
-      {
-        "choice": "A"
-      },
-      {
-        "choice": "C"
-      },
-      {
-        "choice": "A"
-      },
-      {
-        "choice": "E",
-        "markedWrong": true
-      },
-      {
-        "choice": "E"
-      },
-      {
-        "choice": "E",
-        "markedWrong": true
+        "guessed": false,
+        "requiresStudy": false
       },
       {
         "choice": "A",
-        "markedWrong": true
-      },
-      {
-        "choice": "C"
-      },
-      {
-        "choice": "E"
-      },
-      {
-        "choice": "B"
-      },
-      {
-        "choice": "B"
-      },
-      {
-        "choice": "C"
+        "guessed": false,
+        "requiresStudy": false
       },
       {
         "choice": "A",
-        "markedWrong": true
+        "guessed": false,
+        "requiresStudy": false
       },
       {
-        "choice": "B"
+        "choice": "D",
+        "guessed": false,
+        "requiresStudy": false
       },
       {
         "choice": "E",
-        "markedWrong": true
+        "guessed": false,
+        "requiresStudy": false
+      },
+      {
+        "choice": "E",
+        "guessed": false,
+        "requiresStudy": false
+      },
+      {
+        "choice": "D",
+        "guessed": false,
+        "requiresStudy": false
       },
       {
         "choice": "A",
-        "markedWrong": true
+        "guessed": false,
+        "requiresStudy": false
+      },
+      {
+        "choice": "A",
+        "guessed": false,
+        "requiresStudy": false
+      },
+      {
+        "choice": "A",
+        "guessed": false,
+        "requiresStudy": false,
+        "markedWrong": true,
+        "correctAnswer": "b"
+      },
+      {
+        "choice": "B",
+        "guessed": false,
+        "requiresStudy": true
       },
       {
         "choice": "C",
-        "markedWrong": false
+        "guessed": false,
+        "requiresStudy": false
       },
       {
         "choice": "E",
-        "markedWrong": true
+        "guessed": true,
+        "requiresStudy": true
       },
       {
-        "choice": "A"
-      },
-      {
-        "choice": "D"
-      },
-      {
-        "choice": "D",
-        "markedWrong": true
-      },
-      {
-        "choice": "A"
-      },
-      {
-        "choice": "A"
-      },
-      {
-        "choice": "D",
-        "markedWrong": true
-      },
-      {
-        "choice": "C"
-      },
-      {
-        "choice": "B"
+        "choice": "E",
+        "guessed": false,
+        "requiresStudy": false
       },
       {
         "choice": "C",
-        "markedWrong": true
+        "guessed": false,
+        "requiresStudy": false
       },
       {
-        "choice": "D"
+        "choice": "B",
+        "guessed": false,
+        "requiresStudy": true
+      },
+      {
+        "choice": "D",
+        "guessed": false,
+        "requiresStudy": false
+      },
+      {
+        "choice": "E",
+        "guessed": false,
+        "requiresStudy": false
+      },
+      {
+        "choice": "B",
+        "guessed": false,
+        "requiresStudy": false
+      },
+      {
+        "choice": "C",
+        "guessed": false,
+        "requiresStudy": false
+      },
+      {
+        "choice": "B",
+        "guessed": false,
+        "requiresStudy": true
+      },
+      {
+        "choice": "B",
+        "guessed": false,
+        "requiresStudy": false
+      },
+      {
+        "choice": "D",
+        "guessed": false,
+        "requiresStudy": false
+      },
+      {
+        "choice": "C",
+        "guessed": false,
+        "requiresStudy": true,
+        "markedWrong": true,
+        "correctAnswer": "e"
+      },
+      {
+        "choice": "A",
+        "guessed": false,
+        "requiresStudy": false
+      },
+      {
+        "choice": "B",
+        "guessed": false,
+        "requiresStudy": false
+      },
+      {
+        "choice": "C",
+        "guessed": false,
+        "requiresStudy": false
+      },
+      {
+        "choice": "A",
+        "guessed": false,
+        "requiresStudy": false
+      },
+      {
+        "choice": "A",
+        "guessed": true,
+        "requiresStudy": true
+      },
+      {
+        "choice": "B",
+        "guessed": true,
+        "requiresStudy": true,
+        "markedWrong": true,
+        "correctAnswer": "a"
+      },
+      {
+        "choice": "B",
+        "guessed": false,
+        "requiresStudy": false
+      },
+      {
+        "choice": "C",
+        "guessed": false,
+        "requiresStudy": false,
+        "markedWrong": true,
+        "correctAnswer": "b"
+      },
+      {
+        "choice": "C",
+        "guessed": false,
+        "requiresStudy": false
+      },
+      {
+        "choice": "B",
+        "guessed": false,
+        "requiresStudy": false
+      },
+      {
+        "choice": "C",
+        "guessed": false,
+        "requiresStudy": false
+      },
+      {
+        "choice": "B",
+        "guessed": false,
+        "requiresStudy": true
+      },
+      {
+        "choice": "E",
+        "guessed": false,
+        "requiresStudy": false
+      },
+      {
+        "choice": "C",
+        "guessed": false,
+        "requiresStudy": false
+      },
+      {
+        "choice": "E",
+        "guessed": false,
+        "requiresStudy": false
+      },
+      {
+        "choice": "D",
+        "guessed": false,
+        "requiresStudy": true
+      },
+      {
+        "choice": "E",
+        "guessed": false,
+        "requiresStudy": true
+      },
+      {
+        "choice": "B",
+        "guessed": false,
+        "requiresStudy": false
+      },
+      {
+        "choice": "C",
+        "guessed": false,
+        "requiresStudy": false
+      },
+      {
+        "choice": "E",
+        "guessed": false,
+        "requiresStudy": true
+      },
+      {
+        "choice": "D",
+        "guessed": true,
+        "requiresStudy": true
+      },
+      {
+        "choice": "D",
+        "guessed": false,
+        "requiresStudy": true
+      },
+      {
+        "choice": "B",
+        "guessed": false,
+        "requiresStudy": false
+      },
+      {
+        "choice": "C",
+        "guessed": false,
+        "requiresStudy": false
+      },
+      {
+        "choice": "D",
+        "guessed": false,
+        "requiresStudy": false
+      },
+      {
+        "choice": "E",
+        "guessed": false,
+        "requiresStudy": false
+      },
+      {
+        "choice": "E",
+        "guessed": false,
+        "requiresStudy": false
+      },
+      {
+        "choice": "A",
+        "guessed": false,
+        "requiresStudy": true
+      },
+      {
+        "choice": "C",
+        "guessed": true,
+        "requiresStudy": true,
+        "markedWrong": true,
+        "correctAnswer": "d"
+      },
+      {
+        "choice": "B",
+        "guessed": true,
+        "requiresStudy": true
+      },
+      {
+        "choice": "E",
+        "guessed": false,
+        "requiresStudy": false
+      },
+      {
+        "choice": "D",
+        "guessed": false,
+        "requiresStudy": false
+      },
+      {
+        "choice": "B",
+        "guessed": false,
+        "requiresStudy": false
+      },
+      {
+        "choice": "C",
+        "guessed": false,
+        "requiresStudy": false
+      },
+      {
+        "choice": "B",
+        "guessed": false,
+        "requiresStudy": false
+      },
+      {
+        "choice": "B",
+        "guessed": false,
+        "requiresStudy": false
+      },
+      {
+        "choice": "A",
+        "guessed": false,
+        "requiresStudy": false
+      },
+      {
+        "choice": "D",
+        "guessed": false,
+        "requiresStudy": false
+      },
+      {
+        "choice": "D",
+        "guessed": false,
+        "requiresStudy": true
+      },
+      {
+        "choice": "E",
+        "guessed": false,
+        "requiresStudy": false
+      },
+      {
+        "choice": "C",
+        "guessed": false,
+        "requiresStudy": false
+      },
+      {
+        "choice": "E",
+        "guessed": false,
+        "requiresStudy": true
+      },
+      {
+        "choice": "D",
+        "guessed": true,
+        "requiresStudy": true,
+        "markedWrong": true,
+        "correctAnswer": "b"
+      },
+      {
+        "choice": "A",
+        "guessed": false,
+        "requiresStudy": false
+      },
+      {
+        "choice": "B",
+        "guessed": false,
+        "requiresStudy": false
+      },
+      {
+        "choice": "A",
+        "guessed": true,
+        "requiresStudy": true
+      },
+      {
+        "choice": "D",
+        "guessed": false,
+        "requiresStudy": false
+      },
+      {
+        "choice": "D",
+        "guessed": false,
+        "requiresStudy": false
       }
     ],
-    "date": "2025-11-21T21:36:44.612Z"
+    "date": "2025-12-02T21:56:59.160Z"
   }
 ]

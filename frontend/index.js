@@ -53,6 +53,7 @@ async function loadTests() {
         <td class="p-2 border">${escapeHtml(dateText)}</td>
         <td class="p-2 border space-x-2">
           <button class="viewDetails bg-blue-500 text-white px-3 py-1 rounded" data-id="${test.id}">View Details</button>
+          <button class="correctTest bg-orange-500 text-white px-3 py-1 rounded" data-id="${test.id}">Correct Test</button>
           <button class="deleteTest bg-red-500 text-white px-3 py-1 rounded" data-id="${test.id}">Delete</button>
         </td>`;
       tbody.appendChild(row);
@@ -60,6 +61,7 @@ async function loadTests() {
 
     // attach handlers
     tbody.querySelectorAll('.viewDetails').forEach(btn => btn.addEventListener('click', () => openDetails(btn.dataset.id)));
+    tbody.querySelectorAll('.correctTest').forEach(btn => btn.addEventListener('click', () => openCorrectModal(btn.dataset.id)));
     tbody.querySelectorAll('.deleteTest').forEach(btn => btn.addEventListener('click', () => deleteTest(btn.dataset.id)));
 
   } catch (err) {
@@ -131,14 +133,18 @@ async function openDetails(id) {
           for (let i = start; i < end; i++) {
             const ans = answers[i] ?? {};
             const choice = ans.choice ?? ans.answer ?? '-';
-              const row = document.createElement('div');
-              row.className = 'flex items-center justify-between p-2 border rounded bg-gray-50 dark:bg-gray-700';
-              const checked = ans.markedWrong ? 'checked' : '';
-              // include a compact correct answer input and a wrong-toggle box that shows X when active
-              const correctVal = ans.correctAnswer ? escapeHtml(ans.correctAnswer) : '';
-              row.innerHTML = `
+            const row = document.createElement('div');
+            row.className = 'flex items-center justify-between p-2 border rounded bg-gray-50 dark:bg-gray-700';
+            const checked = ans.markedWrong ? 'checked' : '';
+            // include a compact correct answer input and a wrong-toggle box that shows X when active
+            const correctVal = ans.correctAnswer ? escapeHtml(ans.correctAnswer) : '';
+            // build tag badges if present
+            const guessedBadge = ans.guessed ? `<span class="ml-2 text-[11px] px-1 rounded bg-yellow-300 text-yellow-900">G</span>` : '';
+            const studyBadge = ans.requiresStudy ? `<span class="ml-2 text-[11px] px-1 rounded bg-red-300 text-red-900">S</span>` : '';
+
+            row.innerHTML = `
                 <div class="flex items-center gap-3">
-                  <div class="text-sm">Q${i + 1}: <strong>${escapeHtml(choice)}</strong></div>
+                  <div class="text-sm">Q${i + 1}: <strong>${escapeHtml(choice)}</strong>${guessedBadge}${studyBadge}</div>
                   <input type="text" data-index="${i}" class="correctAnswerInput ml-2 w-12 h-6 text-center text-sm border rounded hidden" placeholder="" value="${correctVal}" />
                 </div>
                 <div class="flex items-center gap-2">
@@ -244,7 +250,10 @@ async function openDetails(id) {
         cell.style.alignItems = 'center';
         cell.style.justifyContent = 'flex-start';
         cell.style.paddingLeft = '6px';
-        cell.innerHTML = `Q${idx + 1}: <strong>${escapeHtml(choice)}</strong>`;
+        // show tags if present
+        const guessedBadge = ans.guessed ? `<span class="ml-2 text-[11px] px-1 rounded bg-yellow-300 text-yellow-900">G</span>` : '';
+        const studyBadge = ans.requiresStudy ? `<span class="ml-2 text-[11px] px-1 rounded bg-red-300 text-red-900">S</span>` : '';
+        cell.innerHTML = `Q${idx + 1}: <strong>${escapeHtml(choice)}</strong>${guessedBadge}${studyBadge}`;
 
         // compute row/column placement: column = Math.floor(idx / perColumn), row = (idx % perColumn) + 1
         const col = Math.floor(idx / perColumn) + 1;
@@ -369,5 +378,149 @@ async function deleteTest(id) {
   } catch (err) {
     console.error(err);
     alert('Failed to delete test');
+  }
+}
+
+// === Correct Test Modal ===
+async function openCorrectModal(id) {
+  const correctModal = document.getElementById("correctModal");
+  const correctTestForm = document.getElementById("correctTestForm");
+  const correctModalImage = document.getElementById("correctModalImage");
+  const correctImagePreview = document.getElementById("correctImagePreview");
+  const correctImagePreviewContainer = document.getElementById("correctImagePreviewContainer");
+  const correctStatusContainer = document.getElementById("correctStatusContainer");
+  const correctStatusText = document.getElementById("correctStatusText");
+  const correctFormSubmitBtn = document.getElementById("correctFormSubmitBtn");
+  const closeCorrectModalBtn = document.getElementById("closeCorrectModal");
+
+  // Store test ID for submission
+  correctTestForm.dataset.testId = id;
+
+  // Reset form
+  correctTestForm.reset();
+  correctImagePreviewContainer.classList.add('hidden');
+  correctStatusContainer.classList.add('hidden');
+
+  // Image preview handler
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        correctImagePreview.src = event.target.result;
+        correctImagePreviewContainer.classList.remove('hidden');
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+  correctModalImage.addEventListener('change', handleImageChange);
+
+  // Handle paste event to support pasting images from clipboard
+  const handlePasteEvent = (e) => {
+    const items = e.clipboardData?.items;
+    if (!items) return;
+
+    for (let item of items) {
+      if (item.kind === 'file' && item.type.startsWith('image/')) {
+        e.preventDefault();
+        const file = item.getAsFile();
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = (event) => {
+            correctImagePreview.src = event.target.result;
+            correctImagePreviewContainer.classList.remove('hidden');
+            // Create a synthetic File object and set it to the input
+            const dataTransfer = new DataTransfer();
+            dataTransfer.items.add(file);
+            correctModalImage.files = dataTransfer.files;
+          };
+          reader.readAsDataURL(file);
+        }
+        break;
+      }
+    }
+  };
+  document.addEventListener('paste', handlePasteEvent);
+
+  // Form submission
+  const handleCorrectSubmit = async (e) => {
+    e.preventDefault();
+    const imageFile = correctModalImage.files[0];
+
+    if (!imageFile) {
+      showCorrectStatus('Please upload an image', 'error');
+      return;
+    }
+
+    correctFormSubmitBtn.disabled = true;
+    showCorrectStatus('Processing answer key...', 'info');
+
+    try {
+      const reader = new FileReader();
+      reader.onload = async (event) => {
+        const imageBase64 = event.target.result.split(',')[1];
+
+        const res = await fetch('/api/correct-test', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            testId: id,
+            answerKeyImage: imageBase64
+          })
+        });
+
+        if (!res.ok) {
+          const errData = await res.json();
+          throw new Error(errData.error || 'Correction failed');
+        }
+
+        const result = await res.json();
+        showCorrectStatus(`Test corrected! Score: ${result.correct}/${result.total}`, 'success');
+        
+        // Close modal and reload tests after 1.5 seconds
+        setTimeout(() => {
+          correctModal.classList.add('hidden');
+          correctModal.classList.remove('flex');
+          correctTestForm.removeEventListener('submit', handleCorrectSubmit);
+          loadTests();
+        }, 1500);
+      };
+      reader.readAsDataURL(imageFile);
+    } catch (err) {
+      console.error(err);
+      showCorrectStatus(`Error: ${err.message}`, 'error');
+      correctFormSubmitBtn.disabled = false;
+    }
+  };
+
+  correctTestForm.addEventListener('submit', handleCorrectSubmit);
+
+  // Close modal handler
+  const handleCloseCorrectModal = () => {
+    correctModal.classList.add('hidden');
+    correctModal.classList.remove('flex');
+    correctTestForm.removeEventListener('submit', handleCorrectSubmit);
+    closeCorrectModalBtn.removeEventListener('click', handleCloseCorrectModal);
+    correctModalImage.removeEventListener('change', handleImageChange);
+    document.removeEventListener('paste', handlePasteEvent);
+  };
+
+  closeCorrectModalBtn.addEventListener('click', handleCloseCorrectModal);
+
+  // Show modal with animation
+  correctModal.classList.remove('hidden');
+  correctModal.classList.add('flex', 'items-center', 'justify-center');
+
+  function showCorrectStatus(message, type) {
+    correctStatusText.textContent = message;
+    correctStatusContainer.classList.remove('hidden', 'bg-green-50', 'border-green-200', 'text-green-800', 'bg-red-50', 'border-red-200', 'text-red-800', 'bg-blue-50', 'border-blue-200', 'text-blue-800');
+    
+    if (type === 'success') {
+      correctStatusContainer.classList.add('bg-green-50', 'border-green-200', 'text-green-800');
+    } else if (type === 'error') {
+      correctStatusContainer.classList.add('bg-red-50', 'border-red-200', 'text-red-800');
+    } else if (type === 'info') {
+      correctStatusContainer.classList.add('bg-blue-50', 'border-blue-200', 'text-blue-800');
+    }
   }
 }

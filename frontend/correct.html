@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Correct Test — SAT Test Manager</title>
+
+  <!-- Tailwind CDN (official recommended script) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { darkMode: 'class' };</script>
+  <link rel="icon" href="logo.png" type="image/x-icon">
+</head>
+<body class="h-full flex flex-col">
+
+  <div class="flex-1 min-h-screen p-6">
+    <div class="max-w-2xl mx-auto">
+
+      <!-- Header -->
+      <header class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-4">
+        <h1 class="text-3xl font-bold">Correct Test</h1>
+        <div class="flex gap-3">
+          <a href="/" class="px-4 py-2 border rounded hover:bg-gray-200 dark:hover:bg-gray-800 transition">Home</a>
+        </div>
+      </header>
+
+      <!-- Correction Form -->
+      <main>
+        <section class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 space-y-6">
+          <form id="correctionForm" class="space-y-6">
+            <!-- Test Selection -->
+            <div>
+              <label for="testSelect" class="block text-sm font-medium mb-2">Select Test</label>
+              <select id="testSelect" required class="w-full px-4 py-2 border rounded-lg bg-gray-50 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                <option value="">-- Choose a test --</option>
+              </select>
+            </div>
+
+            <!-- Answer Key Image Upload -->
+            <div>
+              <label for="answerKeyImage" class="block text-sm font-medium mb-2">Upload Answer Key Image</label>
+              <input id="answerKeyImage" type="file" accept="image/*" required class="w-full px-4 py-2 border rounded-lg bg-gray-50 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+              <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">Upload a clear image of the answer key showing correct answers for each question, or paste an image from your clipboard (Ctrl+V / Cmd+V)</p>
+            </div>
+
+            <!-- Preview Image -->
+            <div id="imagePreviewContainer" class="hidden">
+              <label class="block text-sm font-medium mb-2">Image Preview</label>
+              <img id="imagePreview" src="" alt="Answer key preview" class="max-w-full h-auto max-h-80 rounded-lg border">
+            </div>
+
+            <!-- Submit Button -->
+            <div class="flex gap-3">
+              <button id="submitBtn" type="submit" class="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition">Correct Test</button>
+              <button id="resetBtn" type="reset" class="px-6 py-2 border rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition">Clear</button>
+            </div>
+          </form>
+
+          <!-- Status Messages -->
+          <div id="statusContainer" class="hidden p-4 rounded-lg border">
+            <div id="statusMessage" class="text-sm"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="correct.js"></script>
+</body>
+</html>
