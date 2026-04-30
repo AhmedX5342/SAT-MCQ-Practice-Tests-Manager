@@ -1,0 +1,6 @@
+future features:
+* signup/login authentication & authorization
+* categories/folders for tests
+* use react and shadcn
+* add image ai integration
+* graphs and metrics for test scores
